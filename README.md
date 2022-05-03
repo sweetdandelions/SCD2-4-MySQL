@@ -47,7 +47,7 @@ WHERE TGT.cust_id IN (
 	SELECT * FROM (
 		SELECT CH.cust_id
 		FROM Customer_History CH
-		WHERE CH.cust_id not in (
+		WHERE CH.cust_id NOT IN (
 			SELECT cust_id FROM Customer)
 			AND curr_flag = 'Y') t)
 		AND TGT.curr_flag = 'Y';
