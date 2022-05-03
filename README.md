@@ -1,5 +1,5 @@
 # SCD2-4-MySQL
-```
+``` sql
 -- drop table Customer;
 create table Customer (
 	-- tbl_id int AUTO_INCREMENT,
