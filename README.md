@@ -43,14 +43,10 @@ AND TGT.curr_flag = 'Y';
 -- invalidate records that are deleted in source
 UPDATE Customer_History TGT
 SET eff_end_date = current_date(), curr_flag = 'N', change_flag = 'DELETE'
-WHERE TGT.cust_id IN (
-	SELECT * FROM (
-		SELECT CH.cust_id
-		FROM Customer_History CH
-		WHERE CH.cust_id NOT IN (
-			SELECT cust_id FROM Customer)
-			AND curr_flag = 'Y') t)
-		AND TGT.curr_flag = 'Y';
+WHERE TGT.cust_id NOT IN (
+	SELECT cust_id 
+	FROM Customer)
+AND TGT.curr_flag = 'Y';
 
 -- add a new row for the changing records
 INSERT INTO Customer_History
